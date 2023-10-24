@@ -5,7 +5,8 @@ interface IGlobalContextProviderProps {
 }
 
 interface IBreed {
-  selectedBreedId: string | undefined;
+  breedId: string | undefined;
+  page: number;
 }
 
 interface IGlobalContext {
@@ -16,7 +17,10 @@ interface IGlobalContext {
 export const GlobalContext = createContext<IGlobalContext | null>(null);
 
 export default function GlobalContextProvider({ children }: IGlobalContextProviderProps) {
-  const [globalState, setGlobalState] = useState<IBreed>({ selectedBreedId: '' });
+  const [globalState, setGlobalState] = useState<IBreed>({
+    breedId: undefined,
+    page: 1,
+  });
 
   return (
     <GlobalContext.Provider
