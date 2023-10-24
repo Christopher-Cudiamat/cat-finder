@@ -1,22 +1,26 @@
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import React from 'react';
 import './App.css';
-import Button from 'react-bootstrap/Button';
-import styled from 'styled-components';
+import Home from 'pages/Home/Home.component';
+import Cat from 'pages/Cat/Cat.component';
 
 const App: React.FC = () => {
-
-  const StyledWrapper = styled.section`
-    padding: 4em;
-    background: papayawhip;
-  `;
-
   return (
     <div className='App'>
-      <StyledWrapper>
-        <Button>INITIAL SET-UP</Button>
-      </StyledWrapper>
+      <Router>
+        <Routes>
+          <Route
+            path='/'
+            element={<Home />}
+          />
+          <Route
+            path='/cat'
+            element={<Cat />}
+          />
+        </Routes>
+      </Router>
     </div>
   );
-}
+};
 
 export default App;
