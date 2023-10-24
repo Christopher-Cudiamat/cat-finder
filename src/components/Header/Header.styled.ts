@@ -1,12 +1,8 @@
 import styled from 'styled-components';
+import Navbar from 'react-bootstrap/Navbar';
 
-export const Header = styled.header`
-  padding: 4px;
-  height: 60px;
-  width: 100%;
+export const StyledHeader = styled(Navbar)`
   background-image: linear-gradient(120deg, #fccb90 0%, #d57eeb 100%);
-
-  @media ${({theme}) => theme.media.laptop} { 
-    display: flex;
-  }
-`
+  color: white;
+  padding: 2rem;
+`;
