@@ -4,8 +4,8 @@ interface IGlobalContextProviderProps {
   children: React.ReactNode;
 }
 
-interface IBreed {
-  breedId: string | undefined;
+export interface IBreed {
+  breedId: string;
   page: number;
 }
 
@@ -18,7 +18,7 @@ export const GlobalContext = createContext<IGlobalContext | null>(null);
 
 export default function GlobalContextProvider({ children }: IGlobalContextProviderProps) {
   const [globalState, setGlobalState] = useState<IBreed>({
-    breedId: undefined,
+    breedId: '',
     page: 1,
   });
 
