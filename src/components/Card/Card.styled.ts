@@ -11,7 +11,7 @@ export const StyledCard = styled.div`
   & span {
     width: 100%;
     height: 30rem;
-    
+
     & img {
       border-top-left-radius: 1rem;
       border-top-right-radius: 1rem;
@@ -29,8 +29,8 @@ export const StyledCard = styled.div`
       font-weight: 500;
       text-decoration: none;
       padding: 1rem 2rem;
-      color: ${({theme}) => theme.color.black};
-      background: ${({theme}) => theme.color.primary};
+      color: ${({ theme }) => theme.color.black};
+      background: ${({ theme }) => theme.color.primary};
       border-radius: 1rem;
     }
   }

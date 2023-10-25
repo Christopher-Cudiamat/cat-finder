@@ -11,7 +11,7 @@ interface ICardProps {
 const Card: React.FC<ICardProps> = ({ imgSrc, id }) => {
   return (
     <StyledCard>
-      <ImagePlaceholder imgSrc={imgSrc}/>
+      <ImagePlaceholder imgSrc={imgSrc} />
       <div className='btn-wrapper'>
         <Link to={`/cat/${id}`}>View details</Link>
       </div>
