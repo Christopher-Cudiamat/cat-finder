@@ -12,7 +12,11 @@ const useFetch = (url: string) => {
     const fetchData = async () => {
       try {
         if (mounted) setLoading(true);
-        const response = await fetch(url);
+        const response = await fetch(url, {
+          headers: {
+            'x-api-key': `${process.env.REACT_APP_API_KEY}`,
+          },
+        });
         const data = await response.json();
 
         if (mounted) setData(data);
