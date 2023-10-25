@@ -8,6 +8,13 @@ export const StyledForm = styled(Form)`
   margin: auto;
   width: 100%;
 
+  @media ${({theme}) => theme.media.laptopM} { 
+    position: fixed;
+    width: 20%;
+    height: 100vh;
+    padding-top: 4rem;
+  }
+
   & label {
     font-size: 2.4rem;
     font-weight: 500;
@@ -18,7 +25,7 @@ export const StyledForm = styled(Form)`
   & button {
     font-size: 1.6rem;
     font-weight: 500;
-    height: 4rem;
+    height: 5rem;
   }
 
   & select {
@@ -26,7 +33,7 @@ export const StyledForm = styled(Form)`
   }
 `;
 
-export const StyledFormFooter = styled.div<{ hideFormFooter?: boolean }>`
+export const StyledFormFooter = styled.div<{hideFormFooter?: boolean }>`
   z-index: 100;
   width: 100%;
   position: fixed;
@@ -34,14 +41,16 @@ export const StyledFormFooter = styled.div<{ hideFormFooter?: boolean }>`
   bottom: ${(props) => (props.hideFormFooter ? '-20rem' : '0')};
   transition: bottom 0.5s;
 
+  @media ${({theme}) => theme.media.laptopM} { 
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    bottom: 0;
+  }
+
   & button {
     width: 100%;
     border-radius: 0;
+    
   }
-
-  & .form-footer {
-    padding: 2rem;
-    background-image: linear-gradient(120deg, #fccb90 0%, #d57eeb 100%);
-    display: flex;
-    justify-content: center;
 `;

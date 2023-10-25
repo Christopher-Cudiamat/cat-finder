@@ -61,7 +61,7 @@ const FormFilter: React.FC<IFormFilterProps> = ({ hideButton }) => {
           aria-label='Form filter select'
           value={breedId}
         >
-          <option value={''}>Select a breed</option>
+          <option value={''} disabled={breedId !== ''}>Select a breed</option>
           {data &&
             data.map(({ id, name }: IOptions) => (
               <option
@@ -84,9 +84,6 @@ const FormFilter: React.FC<IFormFilterProps> = ({ hideButton }) => {
               Load more
             </Button>
           )}
-          <div className='form-footer'>
-            <p>@cats footer</p>
-          </div>
         </StyledFormFooter>
       </Form.Group>
     </StyledForm>
