@@ -1,30 +1,54 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import useFetch from 'hooks/useFetch';
-import { useGlobalContext } from 'hooks/useGlobalContext';
-import { StyledForm } from './FormFilter.styled';
+import { useGlobalContext, IBreed } from 'hooks/useGlobalContext';
+import { StyledForm, StyledFormFooter } from './FormFilter.styled';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+
+interface IFormFilterProps {
+  hideButton?: boolean;
+}
 
 interface IOptions {
   id: string;
   name: string;
 }
 
-const FormFilter: React.FC = () => {
+const FormFilter: React.FC<IFormFilterProps> = ({ hideButton }) => {
+  const [hideFormFooter, setHideFormFooter] = useState(true);
   const { data } = useFetch(`${process.env.REACT_APP_BASE_URL}breeds`);
-  const { setGlobalState } = useGlobalContext();
+  const {
+    globalState: { breedId },
+    setGlobalState,
+  } = useGlobalContext();
 
   const handleSelectBreed = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setGlobalState((prevState) => {
+    setGlobalState((prevState: IBreed) => {
       return { ...prevState, breedId: event.target.value };
     });
   };
 
-  const handleLoadMoreData = () => {
-    setGlobalState((prevState) => {
+  const handleLoadAdditionalData = () => {
+    setGlobalState((prevState: IBreed) => {
       return { ...prevState, page: prevState.page + 1 };
     });
   };
+
+  useEffect(() => {
+    const bottomPageElement = document.querySelector('#bottom');
+
+    if (breedId && bottomPageElement) {
+      const bottomObserver = new IntersectionObserver(([{ isIntersecting }]) => {
+        if (isIntersecting) {
+          setHideFormFooter(false);
+        } else {
+          setHideFormFooter(true);
+        }
+      });
+
+      bottomObserver.observe(bottomPageElement);
+    }
+  }, [breedId]);
 
   return (
     <StyledForm>
@@ -34,7 +58,7 @@ const FormFilter: React.FC = () => {
       >
         <Form.Label>Cat Breeds</Form.Label>
         <Form.Select aria-label='Form filter select'>
-          <option value={undefined}>Select a breed</option>
+          <option value={''}>Select a breed</option>
           {data.map(({ id, name }: IOptions) => (
             <option
               key={id}
@@ -44,12 +68,22 @@ const FormFilter: React.FC = () => {
             </option>
           ))}
         </Form.Select>
-        <Button
-          variant='primary'
-          onClick={() => handleLoadMoreData()}
+        <StyledFormFooter
+          className='form-footer-wrapper'
+          hideFormFooter={hideFormFooter}
         >
-          Load more
-        </Button>
+          {!hideButton && (
+            <Button
+              onClick={handleLoadAdditionalData}
+              disabled={!breedId}
+            >
+              Load more
+            </Button>
+          )}
+          <div className='form-footer'>
+            <p>@cats footer</p>
+          </div>
+        </StyledFormFooter>
       </Form.Group>
     </StyledForm>
   );
