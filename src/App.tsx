@@ -19,7 +19,7 @@ const App: React.FC = () => {
                 element={<Home />}
               />
               <Route
-                path='/cat'
+                path='/cat/:id'
                 element={<Cat />}
               />
             </Routes>
