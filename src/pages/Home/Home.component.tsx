@@ -84,38 +84,38 @@ const Home: React.FC = () => {
 
   return (
     <StyledHome>
-      <div>
-        <FormFilter hideButton={cats && pageCount === cats.length} />
+      <FormFilter hideButton={cats && pageCount === cats.length} />
+      <div className='container-home'>
+        {!cats ? (
+          <div className='hero-container'>
+            <h1 className='hero-title'>Find the cat for you.</h1>
+            <p className='hero-desc'>
+              Owning a cat can be an extremely rewarding relationship. A cat has the ability to both
+              calm your nervous system and provide an immediate outlet for fun and play. Although cats
+              are independent animals who like to scavenge and explore on their own terms, they are
+              also very affectionate with their owners and people they trust.
+            </p>
+            <img
+              src='/images/home-hero.jpg'
+              className='hero-img'
+            />
+          </div>
+        ) : (
+          <ul className='card-gallery'>
+            {cats.map((cat: ICats) => (
+              <li
+                key={cat.id}
+                className='card-wrapper'
+              >
+                <Card
+                  id={cat.id}
+                  imgSrc={cat.url}
+                />
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
-      {!cats ? (
-        <div className='hero-container'>
-          <h1 className='hero-title'>Find the cat for you.</h1>
-          <p className='hero-desc'>
-            Owning a cat can be an extremely rewarding relationship. A cat has the ability to both
-            calm your nervous system and provide an immediate outlet for fun and play. Although cats
-            are independent animals who like to scavenge and explore on their own terms, they are
-            also very affectionate with their owners and people they trust.
-          </p>
-          <img
-            src='/images/home-hero.jpg'
-            className='hero-img'
-          />
-        </div>
-      ) : (
-        <ul className='card-gallery'>
-          {cats.map((cat: ICats) => (
-            <li
-              key={cat.id}
-              className='card-wrapper'
-            >
-              <Card
-                id={cat.id}
-                imgSrc={cat.url}
-              />
-            </li>
-          ))}
-        </ul>
-      )}
       <div id='bottom' />
     </StyledHome>
   );
