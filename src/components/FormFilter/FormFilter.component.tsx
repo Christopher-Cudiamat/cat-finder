@@ -56,7 +56,7 @@ const FormFilter: React.FC<IFormFilterProps> = ({ hideButton }) => {
         controlId='formGroupEmail'
         onChange={handleSelectBreed}
       >
-        <Form.Label>Cat Breeds</Form.Label>
+        <Form.Label>Cat Finder</Form.Label>
         <Form.Select aria-label='Form filter select'>
           <option value={''}>Select a breed</option>
           {data.map(({ id, name }: IOptions) => (

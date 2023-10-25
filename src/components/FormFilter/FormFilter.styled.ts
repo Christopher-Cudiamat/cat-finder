@@ -6,12 +6,18 @@ export const StyledForm = styled(Form)`
   color: white;
   padding: 2rem;
   margin: auto;
-  font-size: 1.8rem;
   width: 100%;
+
+  & label {
+    font-size: 2.4rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+  }
 
   & select,
   & button {
     font-size: 1.6rem;
+    font-weight: 500;
     height: 4rem;
   }
 
@@ -21,6 +27,7 @@ export const StyledForm = styled(Form)`
 `;
 
 export const StyledFormFooter = styled.div<{ hideFormFooter?: boolean }>`
+  z-index: 100;
   width: 100%;
   position: fixed;
   left: 0;
