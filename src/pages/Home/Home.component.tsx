@@ -1,13 +1,13 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useEffect, useState } from 'react';
-import { IBreed, useGlobalContext } from 'hooks/useGlobalContext';
+import { IGlobalState, useGlobalContext } from 'hooks/useGlobalContext';
+import { useSearchParams } from 'react-router-dom';
+import { TPartialBreed } from 'types/bereed';
 import { StyledHome } from './Home.styled';
 import FormFilter from 'components/FormFilter/FormFilter.component';
 import Card from 'components/Card/Card.component';
-import { useSearchParams } from 'react-router-dom';
 
-interface ICats {
-  breeds: any;
+interface ICat {
+  breeds: TPartialBreed[];
   height: number;
   id: string;
   url: string;
@@ -19,7 +19,7 @@ const Home: React.FC = () => {
     globalState: { page, breedId },
     setGlobalState,
   } = useGlobalContext();
-  const [cats, setCats] = useState<any>(null);
+  const [cats, setCats] = useState<ICat[] | null>(null);
   const [pageCount, setPageCount] = useState(0);
   const abortController = new AbortController();
   const url = `${process.env.REACT_APP_BASE_URL}images/search?page=${page}&limit=10&has_breeds=1&breed_ids=${breedId}`;
@@ -28,7 +28,7 @@ const Home: React.FC = () => {
 
   useEffect(() => {
     if (breedIdParam) {
-      setGlobalState((prevState: IBreed) => {
+      setGlobalState((prevState: IGlobalState) => {
         return { ...prevState, breedId: breedIdParam };
       });
     }
@@ -61,9 +61,9 @@ const Home: React.FC = () => {
           return;
         }
 
-        const resetCatsArr = cats.filter((item: any) => item.breeds[0].id === breedId);
+        const resetCatsArr = cats.filter((item: ICat) => item.breeds[0].id === breedId);
         const filteredCatsArr = data.filter(
-          (item1: any) => !cats.some((item2: any) => item1.id === item2.id)
+          (item1: ICat) => !cats.some((item2: ICat) => item1.id === item2.id)
         );
         setCats([...resetCatsArr, ...filteredCatsArr]);
 
@@ -102,7 +102,7 @@ const Home: React.FC = () => {
           </div>
         ) : (
           <ul className='card-gallery'>
-            {cats.map((cat: ICats) => (
+            {cats.map((cat: ICat) => (
               <li
                 key={cat.id}
                 className='card-wrapper'

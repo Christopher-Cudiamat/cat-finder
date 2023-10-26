@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import useFetch from 'hooks/useFetch';
-import { useGlobalContext, IBreed } from 'hooks/useGlobalContext';
+import { useGlobalContext, IGlobalState } from 'hooks/useGlobalContext';
 import { StyledForm, StyledFormFooter } from './FormFilter.styled';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
 interface IFormFilterProps {
-  hideButton?: boolean;
+  hideButton?: boolean | null;
 }
 
 interface IOptions {
@@ -23,13 +23,13 @@ const FormFilter: React.FC<IFormFilterProps> = ({ hideButton }) => {
   } = useGlobalContext();
 
   const handleSelectBreed = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setGlobalState((prevState: IBreed) => {
+    setGlobalState((prevState: IGlobalState) => {
       return { ...prevState, breedId: event.target.value };
     });
   };
 
   const handleLoadAdditionalData = () => {
-    setGlobalState((prevState: IBreed) => {
+    setGlobalState((prevState: IGlobalState) => {
       return { ...prevState, page: prevState.page + 1 };
     });
   };
@@ -61,7 +61,12 @@ const FormFilter: React.FC<IFormFilterProps> = ({ hideButton }) => {
           aria-label='Form filter select'
           value={breedId}
         >
-          <option value={''} disabled={breedId !== ''}>Select a breed</option>
+          <option
+            value={''}
+            disabled={breedId !== ''}
+          >
+            Select a breed
+          </option>
           {data &&
             data.map(({ id, name }: IOptions) => (
               <option

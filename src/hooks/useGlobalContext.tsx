@@ -4,20 +4,20 @@ interface IGlobalContextProviderProps {
   children: React.ReactNode;
 }
 
-export interface IBreed {
-  breedId: string;
+export interface IGlobalState {
+  breedId: string | undefined;
   page: number;
 }
 
 interface IGlobalContext {
-  globalState: IBreed;
-  setGlobalState: React.Dispatch<React.SetStateAction<IBreed>>;
+  globalState: IGlobalState;
+  setGlobalState: React.Dispatch<React.SetStateAction<IGlobalState>>;
 }
 
 export const GlobalContext = createContext<IGlobalContext | null>(null);
 
 export default function GlobalContextProvider({ children }: IGlobalContextProviderProps) {
-  const [globalState, setGlobalState] = useState<IBreed>({
+  const [globalState, setGlobalState] = useState<IGlobalState>({
     breedId: '',
     page: 1,
   });
