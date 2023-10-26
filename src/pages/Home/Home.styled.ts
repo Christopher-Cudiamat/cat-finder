@@ -1,13 +1,12 @@
 import styled from 'styled-components';
 
 export const StyledHome = styled.section`
-
-  @media ${({theme}) => theme.media.laptopM} { 
+  @media ${({ theme }) => theme.media.laptopM} {
     display: flex;
   }
 
   & .container-home {
-    @media ${({theme}) => theme.media.laptopM} { 
+    @media ${({ theme }) => theme.media.laptopM} {
       width: 100%;
       padding-left: 20%;
     }
@@ -17,7 +16,7 @@ export const StyledHome = styled.section`
     position: relative;
     padding: 2rem;
 
-    @media ${({theme}) => theme.media.laptopM} { 
+    @media ${({ theme }) => theme.media.laptopM} {
       padding-top: 5rem;
     }
   }
@@ -31,7 +30,7 @@ export const StyledHome = styled.section`
     font-size: 3.2rem;
     margin-bottom: 2rem;
 
-    @media ${({theme}) => theme.media.laptopM} { 
+    @media ${({ theme }) => theme.media.laptopM} {
       font-size: 4rem;
     }
   }
@@ -51,16 +50,15 @@ export const StyledHome = styled.section`
     padding-right: 2rem;
     margin: auto;
 
-    @media ${({theme}) => theme.media.tablet} { 
-      display: flex;  
+    @media ${({ theme }) => theme.media.tablet} {
+      display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
     }
 
-    @media ${({theme}) => theme.media.laptopM} { 
+    @media ${({ theme }) => theme.media.laptopM} {
       justify-content: center;
       gap: 2.5rem;
-    
     }
   }
 
@@ -69,11 +67,11 @@ export const StyledHome = styled.section`
     min-width: 300px;
     margin-bottom: 2rem;
 
-    @media ${({theme}) => theme.media.tablet} { 
+    @media ${({ theme }) => theme.media.tablet} {
       width: 49%;
     }
 
-    @media ${({theme}) => theme.media.laptop} { 
+    @media ${({ theme }) => theme.media.laptop} {
       width: 30%;
     }
   }

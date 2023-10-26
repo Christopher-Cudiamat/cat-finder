@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { IGlobalState, useGlobalContext } from 'hooks/useGlobalContext';
+import { useGlobalContext } from 'hooks/useGlobalContext';
 import { useSearchParams } from 'react-router-dom';
 import { TPartialBreed } from 'types/bereed';
 import { StyledHome } from './Home.styled';
@@ -15,27 +15,22 @@ interface ICat {
 }
 
 const Home: React.FC = () => {
-  const {
-    globalState: { page, breedId },
-    setGlobalState,
-  } = useGlobalContext();
+  const { globalState, setGlobalState } = useGlobalContext();
   const [cats, setCats] = useState<ICat[] | null>(null);
   const [pageCount, setPageCount] = useState(0);
   const abortController = new AbortController();
-  const url = `${process.env.REACT_APP_BASE_URL}images/search?page=${page}&limit=10&has_breeds=1&breed_ids=${breedId}`;
+  const url = `${process.env.REACT_APP_BASE_URL}images/search?page=${globalState?.page}&limit=10&has_breeds=1&breed_ids=${globalState?.breedId}`;
   const [searchParams] = useSearchParams();
   const breedIdParam = searchParams.get('breed');
 
   useEffect(() => {
     if (breedIdParam) {
-      setGlobalState((prevState: IGlobalState) => {
-        return { ...prevState, breedId: breedIdParam };
-      });
+      setGlobalState({ ...globalState, breedId: breedIdParam });
     }
   }, [breedIdParam]);
 
   useEffect(() => {
-    if (!breedId || breedId === undefined) {
+    if (!globalState?.breedId || globalState?.breedId === undefined) {
       if (cats) setCats(null);
       return;
     }
@@ -49,7 +44,8 @@ const Home: React.FC = () => {
         });
 
         if (!response.ok) {
-          throw new Error('Network response was not ok');
+          setGlobalState({ ...globalState, error: true });
+          return;
         }
 
         const data = await response.json();
@@ -61,7 +57,9 @@ const Home: React.FC = () => {
           return;
         }
 
-        const resetCatsArr = cats.filter((item: ICat) => item.breeds[0].id === breedId);
+        const resetCatsArr = cats.filter(
+          (item: ICat) => item.breeds[0].id === globalState?.breedId
+        );
         const filteredCatsArr = data.filter(
           (item1: ICat) => !cats.some((item2: ICat) => item1.id === item2.id)
         );
@@ -71,9 +69,7 @@ const Home: React.FC = () => {
           abortController.abort(); // Cancel the request if component unmounts
         };
       } catch (error) {
-        if (error) {
-          console.log('Request was aborted.', error);
-        }
+        setGlobalState({ ...globalState, error: true });
       }
     };
 
