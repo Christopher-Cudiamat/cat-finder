@@ -11,7 +11,7 @@ const ImagePlaceholder: React.FC<ImagePlaceholderProps> = ({ imgSrc, className }
   return (
     <LazyLoadImage
       alt='Loading...'
-      placeholderSrc='https://placehold.co/600x400' // placeholder image
+      placeholderSrc={'https://placekitten.com/640/360'} // placeholder image
       src={imgSrc}
       effect='blur' // Add a blur effect to the placeholder
       wrapperClassName={className}
