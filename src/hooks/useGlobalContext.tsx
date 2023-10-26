@@ -7,6 +7,7 @@ interface IGlobalContextProviderProps {
 export interface IGlobalState {
   breedId: string | undefined;
   page: number;
+  error: boolean;
 }
 
 interface IGlobalContext {
@@ -20,6 +21,7 @@ export default function GlobalContextProvider({ children }: IGlobalContextProvid
   const [globalState, setGlobalState] = useState<IGlobalState>({
     breedId: '',
     page: 1,
+    error: false,
   });
 
   return (
