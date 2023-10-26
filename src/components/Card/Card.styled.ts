@@ -7,10 +7,19 @@ export const StyledCard = styled.div`
   border-radius: 1rem;
   border-radius: 1rem;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  position: relative;
+  top: 0;
+  transition: top ease 0.2s;
+
+  &:hover {
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 22px 54px 0px;
+    top: -10px;
+  }
 
   & span {
     width: 100%;
     height: 30rem;
+    overflow: hidden;
 
     & img {
       border-top-left-radius: 1rem;
@@ -32,6 +41,7 @@ export const StyledCard = styled.div`
       color: ${({ theme }) => theme.color.black};
       background: ${({ theme }) => theme.color.primary};
       border-radius: 1rem;
+      cursor: pointer;
     }
   }
 `;
