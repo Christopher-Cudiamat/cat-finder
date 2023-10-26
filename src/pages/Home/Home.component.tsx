@@ -3,8 +3,8 @@ import React, { useEffect, useState } from 'react';
 import { IBreed, useGlobalContext } from 'hooks/useGlobalContext';
 import { StyledHome } from './Home.styled';
 import FormFilter from 'components/FormFilter/FormFilter.component';
-import Card from 'components/Card/Card.component'
-import { useSearchParams } from 'react-router-dom'
+import Card from 'components/Card/Card.component';
+import { useSearchParams } from 'react-router-dom';
 
 interface ICats {
   breeds: any;
@@ -17,22 +17,22 @@ interface ICats {
 const Home: React.FC = () => {
   const {
     globalState: { page, breedId },
-    setGlobalState
+    setGlobalState,
   } = useGlobalContext();
   const [cats, setCats] = useState<any>(null);
   const [pageCount, setPageCount] = useState(0);
   const abortController = new AbortController();
   const url = `${process.env.REACT_APP_BASE_URL}images/search?page=${page}&limit=10&has_breeds=1&breed_ids=${breedId}`;
   const [searchParams] = useSearchParams();
-  const breedIdParam = searchParams.get('breed')
+  const breedIdParam = searchParams.get('breed');
 
   useEffect(() => {
-    if(breedIdParam) {
+    if (breedIdParam) {
       setGlobalState((prevState: IBreed) => {
         return { ...prevState, breedId: breedIdParam };
-      })
+      });
     }
-  },[breedIdParam]);
+  }, [breedIdParam]);
 
   useEffect(() => {
     if (!breedId || breedId === undefined) {
@@ -91,9 +91,9 @@ const Home: React.FC = () => {
             <h1 className='hero-title'>Find the cat for you.</h1>
             <p className='hero-desc'>
               Owning a cat can be an extremely rewarding relationship. A cat has the ability to both
-              calm your nervous system and provide an immediate outlet for fun and play. Although cats
-              are independent animals who like to scavenge and explore on their own terms, they are
-              also very affectionate with their owners and people they trust.
+              calm your nervous system and provide an immediate outlet for fun and play. Although
+              cats are independent animals who like to scavenge and explore on their own terms, they
+              are also very affectionate with their owners and people they trust.
             </p>
             <img
               src='/images/home-hero.jpg'
