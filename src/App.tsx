@@ -6,6 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { ThemeProvider } from 'styled-components';
 import Home from 'pages/Home/Home.component';
 import Cat from 'pages/Cat/Cat.component';
+import Modal from 'components/Modal/Modal.component';
 
 const App: React.FC = () => {
   return (
@@ -13,16 +14,19 @@ const App: React.FC = () => {
       <GlobalContextProvider>
         <ThemeProvider theme={theme}>
           <Router>
-            <Routes>
-              <Route
-                path='/'
-                element={<Home />}
-              />
-              <Route
-                path='/cat/:id'
-                element={<Cat />}
-              />
-            </Routes>
+            <main>
+              <Routes>
+                <Route
+                  path='/'
+                  element={<Home />}
+                />
+                <Route
+                  path='/cat/:id'
+                  element={<Cat />}
+                />
+              </Routes>
+            </main>
+            <Modal />
           </Router>
         </ThemeProvider>
       </GlobalContextProvider>
