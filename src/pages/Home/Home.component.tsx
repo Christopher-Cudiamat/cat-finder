@@ -4,7 +4,7 @@ import { IBreed, useGlobalContext } from 'hooks/useGlobalContext';
 import { StyledHome } from './Home.styled';
 import FormFilter from 'components/FormFilter/FormFilter.component';
 import Card from 'components/Card/Card.component';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom'
 
 interface ICats {
   breeds: any;
