@@ -3,7 +3,6 @@ import React from 'react';
 interface IStarRating {
   size: string;
   rate: number;
-
   className?: string;
 }
 
