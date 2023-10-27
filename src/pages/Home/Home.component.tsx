@@ -18,8 +18,8 @@ const Home: React.FC = () => {
   const { globalState, setGlobalState } = useGlobalContext();
   const [cats, setCats] = useState<ICat[] | null>(null);
   const [pageCount, setPageCount] = useState(0);
-  const abortController = new AbortController();
   const url = `${process.env.REACT_APP_BASE_URL}images/search?page=${globalState?.page}&limit=10&has_breeds=1&breed_ids=${globalState?.breedId}`;
+  const abortController = new AbortController();
   const [searchParams] = useSearchParams();
   const breedIdParam = searchParams.get('breed');
 
@@ -43,10 +43,7 @@ const Home: React.FC = () => {
           },
         });
 
-        if (!response.ok) {
-          setGlobalState({ ...globalState, error: true });
-          return;
-        }
+        if (!response.ok) throw new Error();
 
         const data = await response.json();
         const headersObj = Object.fromEntries([...response.headers.entries()]);
@@ -64,18 +61,13 @@ const Home: React.FC = () => {
           (item1: ICat) => !cats.some((item2: ICat) => item1.id === item2.id)
         );
         setCats([...resetCatsArr, ...filteredCatsArr]);
-
-        return () => {
-          abortController.abort(); // Cancel the request if component unmounts
-        };
       } catch (error) {
         setGlobalState({ ...globalState, error: true });
       }
     };
 
     fetchData();
-
-    return () => {};
+    return () => abortController?.abort();
   }, [url]);
 
   return (
@@ -97,19 +89,21 @@ const Home: React.FC = () => {
             />
           </div>
         ) : (
-          <ul className='card-gallery'>
-            {cats.map((cat: ICat) => (
-              <li
-                key={cat.id}
-                className='card-wrapper'
-              >
-                <Card
-                  id={cat.id}
-                  imgSrc={cat.url}
-                />
-              </li>
-            ))}
-          </ul>
+          <React.Fragment>
+            <ul className='card-gallery'>
+              {cats.map((cat: ICat) => (
+                <li
+                  key={cat.id}
+                  className='card-wrapper'
+                >
+                  <Card
+                    id={cat.id}
+                    imgSrc={cat.url}
+                  />
+                </li>
+              ))}
+            </ul>
+          </React.Fragment>
         )}
       </div>
       <div id='bottom' />

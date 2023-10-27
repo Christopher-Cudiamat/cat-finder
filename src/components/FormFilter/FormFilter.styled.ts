@@ -8,7 +8,7 @@ export const StyledForm = styled(Form)`
   margin: auto;
   width: 100%;
 
-  @media ${({theme}) => theme.media.laptopM} { 
+  @media ${({ theme }) => theme.media.laptopM} {
     position: fixed;
     width: 20%;
     height: 100vh;
@@ -33,7 +33,7 @@ export const StyledForm = styled(Form)`
   }
 `;
 
-export const StyledFormFooter = styled.div<{hideFormFooter?: boolean }>`
+export const StyledFormFooter = styled.div<{ hideFormFooter?: boolean }>`
   z-index: 100;
   width: 100%;
   position: fixed;
@@ -41,7 +41,7 @@ export const StyledFormFooter = styled.div<{hideFormFooter?: boolean }>`
   bottom: ${(props) => (props.hideFormFooter ? '-20rem' : '0')};
   transition: bottom 0.5s;
 
-  @media ${({theme}) => theme.media.laptopM} { 
+  @media ${({ theme }) => theme.media.laptopM} {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -51,6 +51,5 @@ export const StyledFormFooter = styled.div<{hideFormFooter?: boolean }>`
   & button {
     width: 100%;
     border-radius: 0;
-    
   }
 `;

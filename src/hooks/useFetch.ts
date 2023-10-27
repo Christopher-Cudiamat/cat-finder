@@ -1,27 +1,33 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState, useEffect } from 'react';
+import { useGlobalContext } from './useGlobalContext';
 
-const useFetch = (url: string) => {
-  const [data, setData] = useState<never[]>([]);
+const useFetch = (endpoint: string, refetch?: boolean) => {
+  const [data, setData] = useState<any>([]);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
+  const { globalState, setGlobalState } = useGlobalContext();
+  const abortController = new AbortController();
 
   useEffect(() => {
-    if (url == null) return;
-    let mounted = true; // makes sure component is always mounted
+    if (endpoint === null) return;
+    let mounted = true; // makes sure component is mounted
 
     const fetchData = async () => {
       try {
         if (mounted) setLoading(true);
-        const response = await fetch(url, {
+        const response = await fetch(`${process.env.REACT_APP_BASE_URL}${endpoint}`, {
           headers: {
             'x-api-key': `${process.env.REACT_APP_API_KEY}`,
           },
         });
+
+        if (!response.ok) throw new Error();
+
         const data = await response.json();
 
         if (mounted) setData(data);
-      } catch (error) {
-        if (mounted) setError(true);
+      } catch (_) {
+        if (mounted) setGlobalState({ ...globalState, error: true });
       } finally {
         if (mounted) setLoading(false);
       }
@@ -31,10 +37,11 @@ const useFetch = (url: string) => {
 
     return () => {
       mounted = false;
+      abortController.abort(); // Cancel the request if component unmounts.
     };
-  }, [url]);
+  }, [endpoint, refetch]);
 
-  return { data, loading, error };
+  return { data, loading };
 };
 
 export default useFetch;

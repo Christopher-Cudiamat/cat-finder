@@ -16,7 +16,7 @@ const Cat: React.FC = () => {
   const navigate = useNavigate();
   const {
     data: { url, breeds },
-  } = useFetch(`https://api.thecatapi.com/v1/images/${id}`);
+  } = useFetch(`images/${id}`);
   const cat = breeds?.[0];
   const ratings = [
     { label: 'Adaptability', count: cat?.adaptability },

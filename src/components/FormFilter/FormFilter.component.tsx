@@ -16,7 +16,7 @@ interface IOptions {
 
 const FormFilter: React.FC<IFormFilterProps> = ({ hideButton }) => {
   const [hideFormFooter, setHideFormFooter] = useState(true);
-  const { data } = useFetch(`${process.env.REACT_APP_BASE_URL}breeds`);
+  const { data } = useFetch('breeds');
   const {
     globalState: { breedId },
     setGlobalState,
