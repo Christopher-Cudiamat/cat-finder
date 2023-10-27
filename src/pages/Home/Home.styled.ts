@@ -15,6 +15,9 @@ export const StyledHome = styled.section`
   & .hero-container {
     position: relative;
     padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
     @media ${({ theme }) => theme.media.laptopM} {
       padding-top: 5rem;
@@ -37,9 +40,14 @@ export const StyledHome = styled.section`
 
   & .hero-desc {
     font-size: 1.8rem;
+    @media ${({ theme }) => theme.media.laptopL} {
+      margin: auto;
+      max-width: 900px;
+    }
   }
 
   & .hero-img {
+    width: 50rem;
     border-radius: 50%;
   }
 

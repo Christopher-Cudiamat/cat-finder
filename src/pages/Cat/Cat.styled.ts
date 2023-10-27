@@ -32,28 +32,26 @@ export const StlyledCat = styled.section`
       box-shadow: rgba(99, 99, 99, 0.2) 0px 22px 54px 0px;
     }
 
-    & > span {
-      height: 30rem;
-      position: relative;
+    height: 35rem;
+    position: relative;
 
-      @media ${({ theme }) => theme.media.tablet} {
-        height: 50rem;
-      }
+    @media ${({ theme }) => theme.media.tablet} {
+      height: 50rem;
+    }
 
-      @media ${({ theme }) => theme.media.laptopM} {
-        border-top-right-radius: 1rem;
-        border-bottom-right-radius: 1rem;
-      }
+    @media ${({ theme }) => theme.media.laptopM} {
+      border-top-right-radius: 1rem;
+      border-bottom-right-radius: 1rem;
+    }
 
-      @media ${({ theme }) => theme.media.laptopL} {
-        height: 70rem;
-      }
+    @media ${({ theme }) => theme.media.laptopL} {
+      height: 70rem;
+    }
 
-      & > img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
+    & > img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
   }
 
