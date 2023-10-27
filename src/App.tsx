@@ -10,8 +10,6 @@ import Modal from 'components/Modal/Modal.component';
 import Loader from 'components/Loader/Loader.component';
 
 const App: React.FC = () => {
-  // const navigation = useNavigation();
-
   return (
     <React.Fragment>
       <GlobalContextProvider>
@@ -30,7 +28,6 @@ const App: React.FC = () => {
               </Routes>
             </main>
             <Loader />
-            {/* { navigation.state === 'loading' ? <Loader /> : null} */}
             <Modal />
           </Router>
         </ThemeProvider>
