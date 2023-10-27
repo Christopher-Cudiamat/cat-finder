@@ -12,8 +12,10 @@ export const StyledCard = styled.div`
   transition: top ease 0.2s;
 
   &:hover {
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 22px 54px 0px;
-    top: -10px;
+    @media ${({ theme }) => theme.media.laptop} {
+      box-shadow: rgba(99, 99, 99, 0.2) 0px 22px 54px 0px;
+      top: -10px;
+    }
   }
 
   & span {

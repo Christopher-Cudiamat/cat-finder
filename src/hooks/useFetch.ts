@@ -6,7 +6,6 @@ const useFetch = (endpoint: string, refetch?: boolean) => {
   const [data, setData] = useState<any>([]);
   const [loading, setLoading] = useState(false);
   const { globalState, setGlobalState } = useGlobalContext();
-  const abortController = new AbortController();
 
   useEffect(() => {
     if (endpoint === null) return;
@@ -37,7 +36,6 @@ const useFetch = (endpoint: string, refetch?: boolean) => {
 
     return () => {
       mounted = false;
-      abortController.abort(); // Cancel the request if component unmounts.
     };
   }, [endpoint, refetch]);
 

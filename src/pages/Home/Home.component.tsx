@@ -19,7 +19,6 @@ const Home: React.FC = () => {
   const [cats, setCats] = useState<ICat[] | null>(null);
   const [pageCount, setPageCount] = useState(0);
   const url = `${process.env.REACT_APP_BASE_URL}images/search?page=${globalState?.page}&limit=10&has_breeds=1&breed_ids=${globalState?.breedId}`;
-  const abortController = new AbortController();
   const [searchParams] = useSearchParams();
   const breedIdParam = searchParams.get('breed');
 
@@ -30,6 +29,7 @@ const Home: React.FC = () => {
   }, [breedIdParam]);
 
   useEffect(() => {
+    console.log('cats', cats);
     if (!globalState?.breedId || globalState?.breedId === undefined) {
       if (cats) setCats(null);
       return;
@@ -67,7 +67,6 @@ const Home: React.FC = () => {
     };
 
     fetchData();
-    return () => abortController?.abort();
   }, [url]);
 
   return (

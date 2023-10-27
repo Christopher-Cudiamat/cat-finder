@@ -1,14 +1,17 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import theme from 'themeGlobal/themeGlobal';
 import GlobalContextProvider from 'hooks/useGlobalContext';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { ThemeProvider } from 'styled-components';
+import theme from 'themeGlobal/themeGlobal';
 import Home from 'pages/Home/Home.component';
 import Cat from 'pages/Cat/Cat.component';
 import Modal from 'components/Modal/Modal.component';
+import Loader from 'components/Loader/Loader.component';
 
 const App: React.FC = () => {
+  // const navigation = useNavigation();
+
   return (
     <React.Fragment>
       <GlobalContextProvider>
@@ -26,6 +29,8 @@ const App: React.FC = () => {
                 />
               </Routes>
             </main>
+            <Loader />
+            {/* { navigation.state === 'loading' ? <Loader /> : null} */}
             <Modal />
           </Router>
         </ThemeProvider>
