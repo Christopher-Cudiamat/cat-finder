@@ -9,11 +9,11 @@ export const StyledCard = styled.div`
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   position: relative;
   top: 0;
-  transition: top ease 0.2s;
+  transition: top ease 0.3s;
 
   &:hover {
     @media ${({ theme }) => theme.media.laptop} {
-      box-shadow: rgba(99, 99, 99, 0.2) 0px 22px 54px 0px;
+      box-shadow: 0px 10px 20px -3px rgba(0, 0, 0, 0.1);
       top: -10px;
     }
   }

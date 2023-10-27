@@ -4,6 +4,7 @@ import { useGlobalContext, IGlobalState } from 'hooks/useGlobalContext';
 import { StyledForm, StyledFormFooter } from './FormFilter.styled';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import text from 'contents/text.json';
 
 interface IFormFilterProps {
   hideButton?: boolean | null;
@@ -56,7 +57,7 @@ const FormFilter: React.FC<IFormFilterProps> = ({ hideButton }) => {
         controlId='formGroupEmail'
         onChange={handleSelectBreed}
       >
-        <Form.Label>Cat Finder</Form.Label>
+        <Form.Label>{text.brandName}</Form.Label>
         <Form.Select
           aria-label='Form filter select'
           value={breedId}
@@ -65,7 +66,7 @@ const FormFilter: React.FC<IFormFilterProps> = ({ hideButton }) => {
             value={''}
             disabled={breedId !== ''}
           >
-            Select a breed
+            {text.selectDefaultValue}
           </option>
           {data &&
             data.map(({ id, name }: IOptions) => (
@@ -86,7 +87,7 @@ const FormFilter: React.FC<IFormFilterProps> = ({ hideButton }) => {
               onClick={handleLoadAdditionalData}
               disabled={!breedId}
             >
-              Load more
+              {text.buttonLoadMore}
             </Button>
           )}
         </StyledFormFooter>

@@ -5,6 +5,7 @@ import { TPartialBreed } from 'types/bereed';
 import { StyledHome } from './Home.styled';
 import FormFilter from 'components/FormFilter/FormFilter.component';
 import Card from 'components/Card/Card.component';
+import text from 'contents/text.json';
 
 interface ICat {
   breeds: TPartialBreed[];
@@ -37,6 +38,7 @@ const Home: React.FC = () => {
 
     const fetchData = async () => {
       try {
+        setGlobalState({ ...globalState, loading: true });
         const response = await fetch(url, {
           headers: {
             'x-api-key': `${process.env.REACT_APP_API_KEY}`,
@@ -63,6 +65,8 @@ const Home: React.FC = () => {
         setCats([...resetCatsArr, ...filteredCatsArr]);
       } catch (error) {
         setGlobalState({ ...globalState, error: true });
+      } finally {
+        setGlobalState({ ...globalState, loading: false });
       }
     };
 
@@ -75,13 +79,8 @@ const Home: React.FC = () => {
       <div className='container-home'>
         {!cats ? (
           <div className='hero-container'>
-            <h1 className='hero-title'>Find the cat for you.</h1>
-            <p className='hero-desc'>
-              Owning a cat can be an extremely rewarding relationship. A cat has the ability to both
-              calm your nervous system and provide an immediate outlet for fun and play. Although
-              cats are independent animals who like to scavenge and explore on their own terms, they
-              are also very affectionate with their owners and people they trust.
-            </p>
+            <h1 className='hero-title'>{text.title}</h1>
+            <p className='hero-desc'>{text.welcomeMessage}</p>
             <img
               src='/images/home-hero.jpg'
               className='hero-img'
