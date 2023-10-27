@@ -4,7 +4,6 @@ import { useGlobalContext } from './useGlobalContext';
 
 const useFetch = (endpoint: string, refetch?: boolean) => {
   const [data, setData] = useState<any>([]);
-  const [loading, setLoading] = useState(false);
   const { globalState, setGlobalState } = useGlobalContext();
 
   useEffect(() => {
@@ -13,7 +12,7 @@ const useFetch = (endpoint: string, refetch?: boolean) => {
 
     const fetchData = async () => {
       try {
-        if (mounted) setLoading(true);
+        setGlobalState({ ...globalState, loading: true });
         const response = await fetch(`${process.env.REACT_APP_BASE_URL}${endpoint}`, {
           headers: {
             'x-api-key': `${process.env.REACT_APP_API_KEY}`,
@@ -28,7 +27,7 @@ const useFetch = (endpoint: string, refetch?: boolean) => {
       } catch (_) {
         if (mounted) setGlobalState({ ...globalState, error: true });
       } finally {
-        if (mounted) setLoading(false);
+        if (mounted) setGlobalState({ ...globalState, loading: false });
       }
     };
 
@@ -39,7 +38,7 @@ const useFetch = (endpoint: string, refetch?: boolean) => {
     };
   }, [endpoint, refetch]);
 
-  return { data, loading };
+  return { data };
 };
 
 export default useFetch;
