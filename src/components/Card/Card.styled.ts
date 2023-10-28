@@ -33,16 +33,12 @@ export const StyledCard = styled.div`
   }
 
   & .btn-wrapper {
-    padding: 2rem 1rem;
+    padding: 1rem;
 
-    & > a {
+    & > a > button {
       font-size: 1.6rem;
       font-weight: 500;
-      text-decoration: none;
       padding: 1rem 2rem;
-      color: ${({ theme }) => theme.color.black};
-      background: ${({ theme }) => theme.color.primary};
-      border-radius: 1rem;
       cursor: pointer;
     }
   }
