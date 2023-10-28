@@ -49,6 +49,18 @@ export const StyledHome = styled.section`
   & .hero-img {
     width: 50rem;
     border-radius: 50%;
+
+    @media ${({ theme }) => theme.media.tablet} {
+      width: 100rem;
+    }
+
+    @media ${({ theme }) => theme.media.laptop} {
+      width: 50rem;
+    }
+
+    @media ${({ theme }) => theme.media.laptopL} {
+      width: 80rem;
+    }
   }
 
   & .card-gallery {
