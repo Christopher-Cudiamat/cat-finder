@@ -82,7 +82,7 @@ const Home: React.FC = () => {
             <h1 className='hero-title'>{text.title}</h1>
             <p className='hero-desc'>{text.welcomeMessage}</p>
             <img
-              src='/images/home-hero.jpg'
+              src='/images/home-hero.webp'
               className='hero-img'
             />
           </div>
