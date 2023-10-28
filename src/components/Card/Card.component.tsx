@@ -12,10 +12,13 @@ interface ICardProps {
 const Card: React.FC<ICardProps> = ({ imgSrc, id }) => {
   return (
     <StyledCard>
-      <ImagePlaceholder imgSrc={imgSrc} />
+      <ImagePlaceholder
+        imgSrc={imgSrc}
+        placeholderSrc={'/images/card-placeholder.webp'}
+      />
       <div className='btn-wrapper'>
         <Link to={`/cat/${id}`}>
-          <Button>View details</Button>
+          <Button variant='outline-primary'>View details</Button>
         </Link>
       </div>
     </StyledCard>
