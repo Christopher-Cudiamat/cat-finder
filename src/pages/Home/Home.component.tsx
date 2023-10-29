@@ -30,7 +30,6 @@ const Home: React.FC = () => {
   }, [breedIdParam]);
 
   useEffect(() => {
-    console.log('cats', cats);
     if (!globalState?.breedId) {
       if (cats) setCats(null);
       return;
