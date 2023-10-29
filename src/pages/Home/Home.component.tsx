@@ -75,36 +75,34 @@ const Home: React.FC = () => {
 
   return (
     <StyledHome>
-      <FormFilter hideButton={cats && pageCount === cats.length} />
-      <div className='container-home'>
+      <FormFilter allDataIsLoaded={cats && pageCount === cats.length} />
+      <div className='wrapper'>
         {!cats ? (
-          <div className='hero-container'>
-            <h1 className='hero-title'>{text.title}</h1>
-            <p className='hero-desc'>{text.welcomeMessage}</p>
+          <div className='hero'>
+            <h1 className='hero__title'>{text.title}</h1>
+            <p className='hero__message'>{text.welcomeMessage}</p>
             <img
               src='/images/home-hero.webp'
-              className='hero-img'
+              className='hero__img'
             />
           </div>
         ) : (
-          <React.Fragment>
-            <ul className='card-gallery'>
-              {cats.map((cat: ICat) => (
-                <li
-                  key={cat.id}
-                  className='card-wrapper'
-                >
-                  <Card
-                    id={cat.id}
-                    imgSrc={cat.url}
-                  />
-                </li>
-              ))}
-            </ul>
-          </React.Fragment>
+          <ul className='cards'>
+            {cats.map((cat: ICat) => (
+              <li
+                key={cat.id}
+                className='cards__list'
+              >
+                <Card
+                  id={cat.id}
+                  imgSrc={cat.url}
+                />
+              </li>
+            ))}
+          </ul>
         )}
       </div>
-      <div id='bottom' />
+      <div id='bottom-observer' />
     </StyledHome>
   );
 };

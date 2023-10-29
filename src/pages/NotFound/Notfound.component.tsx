@@ -9,21 +9,21 @@ const NotFound: React.FC = () => {
 
   return (
     <StyledNotFound>
-      <div className='error-img-wrapper'>
-        <div className='error-img-overlay' />
+      <div className='hero'>
+        <div className='hero__overlay' />
         <img
           src='/images/error-cat.webp'
           alt='Sad cat'
-          className='error-img'
+          className='hero__img'
         />
       </div>
-      <h1 className='error-title'>{text.pageNotFoundTitle}</h1>
-      <p className='error-message'>{text.pageNotFoundMessage}</p>
+      <h1 className='title'>{text.pageNotFoundTitle}</h1>
+      <p className='message'>{text.pageNotFoundMessage}</p>
       <Button
         onClick={() => navigate('/')}
-        className='error-btn'
+        className='btn'
       >
-        {text.goBackToHomePage}
+        {text.goToHomePage}
       </Button>
     </StyledNotFound>
   );

@@ -15,22 +15,30 @@ export const StyledForm = styled(Form)`
     padding-top: 4rem;
   }
 
-  & .form__label {
+  & .form-label {
     font-size: 2.4rem;
     font-weight: 500;
     margin-bottom: 1rem;
   }
 
-  & .form__select,
-  & .form__btn {
+  & .form-select,
+  & .form-btn {
     font-size: 1.6rem;
     font-weight: 500;
     height: 5rem;
     width: 100%;
   }
 
-  & .form__select {
+  & .form-select {
     margin-bottom: 2rem;
+  }
+
+  & .form-btn {
+    border-radius: 0;
+
+    @media ${({ theme }) => theme.media.laptopM} {
+      border-radius: 1rem;
+    }
   }
 `;
 
@@ -43,14 +51,7 @@ export const StyledFormButtonWrapper = styled.div<{ hide: boolean }>`
   bottom: ${(props) => (props?.hide ? '-20rem' : '0')};
 
   @media ${({ theme }) => theme.media.laptopM} {
+    bottom: 0;
     position: relative;
-  }
-
-  & .form__btn {
-    border-radius: 0;
-
-    @media ${({ theme }) => theme.media.laptopM} {
-      border-radius: 1rem;
-    }
   }
 `;

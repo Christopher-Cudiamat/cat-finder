@@ -32,7 +32,7 @@ export const StyledCard = styled.div`
     }
   }
 
-  & .btn-wrapper {
+  & .card__btn--wrapper {
     padding: 1rem;
 
     & > a > button {

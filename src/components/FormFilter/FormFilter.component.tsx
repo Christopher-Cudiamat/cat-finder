@@ -57,11 +57,10 @@ const FormFilter: React.FC<IFormFilterProps> = ({ allDataIsLoaded }) => {
         controlId='formGroupEmail'
         onChange={handleSelectBreed}
       >
-        <Form.Label className='form__label'>{text.brandName}</Form.Label>
+        <Form.Label>{text.brandName}</Form.Label>
         <Form.Select
           aria-label='Form filter select'
           value={breedId}
-          className='form__select'
         >
           <option
             value={''}
@@ -83,7 +82,7 @@ const FormFilter: React.FC<IFormFilterProps> = ({ allDataIsLoaded }) => {
             <Button
               onClick={handleLoadAdditionalData}
               disabled={!breedId}
-              className='form__btn'
+              className='form-btn'
             >
               {text.buttonLoadMore}
             </Button>

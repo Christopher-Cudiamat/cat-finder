@@ -39,35 +39,37 @@ const Cat: React.FC = () => {
   return (
     <React.Fragment>
       <StlyledCat>
-        <div className='cat-img-wrapper'>
+        <div className='img-wrapper'>
           <img
             src={url}
             className={url}
           />
         </div>
         {cat && (
-          <div className='cat-details-wrapper'>
-            <div className='cat-divider' />
-            <div className='cat-details'>
-              <h1 className='cat-name'>{cat.name}</h1>
-              <h2 className='cat-origin'>
+          <div className='details'>
+            <div className='details__divider' />
+            <div className='details__wrapper'>
+              <h1 className='details__name'>{cat.name}</h1>
+              <h2 className='details__origin'>
                 {text.origin}: {cat.origin}
               </h2>
-              <h3 className='cat-temperament'>{cat.temperament}</h3>
-              <p className='cat-description'>{cat.description}</p>
-              {ratings.map((rating: IRatings) => (
-                <div
-                  key={rating.label}
-                  className='cat-ratings-wrapper'
-                >
-                  <p className='cat-ratings-label'>{rating.label}: </p>
-                  <StarRating
-                    size={'24px'}
-                    rate={rating.count}
-                    className='cat-ratings-count'
-                  />
-                </div>
-              ))}
+              <h3 className='details__temperament'>{cat.temperament}</h3>
+              <p className='details__description'>{cat.description}</p>
+              <ul>
+                {ratings.map((rating: IRatings) => (
+                  <li
+                    key={rating.label}
+                    className='details__ratings'
+                  >
+                    <p className='details__ratings--label'>{rating.label}: </p>
+                    <StarRating
+                      size={'24px'}
+                      rate={rating.count}
+                      className='details__ratings--count'
+                    />
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         )}

@@ -16,7 +16,7 @@ const Card: React.FC<ICardProps> = ({ imgSrc, id }) => {
         imgSrc={imgSrc}
         placeholderSrc={'/images/card-placeholder.webp'}
       />
-      <div className='btn-wrapper'>
+      <div className='card__btn--wrapper'>
         <Link to={`/cat/${id}`}>
           <Button variant='outline-primary'>View details</Button>
         </Link>

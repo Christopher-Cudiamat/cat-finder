@@ -5,14 +5,14 @@ export const StyledHome = styled.section`
     display: flex;
   }
 
-  & .container-home {
+  & .wrapper {
     @media ${({ theme }) => theme.media.laptopM} {
       width: 100%;
       padding-left: 20%;
     }
   }
 
-  & .hero-container {
+  & .hero {
     position: relative;
     padding: 2rem;
     display: flex;
@@ -22,52 +22,49 @@ export const StyledHome = styled.section`
     @media ${({ theme }) => theme.media.laptopM} {
       padding-top: 5rem;
     }
-  }
 
-  .hero-title,
-  .hero-desc {
-    text-align: center;
-  }
-
-  & .hero-title {
-    font-size: 3.2rem;
-    margin-bottom: 2rem;
-
-    @media ${({ theme }) => theme.media.laptopM} {
-      font-size: 4rem;
-    }
-  }
-
-  & .hero-desc {
-    font-size: 1.8rem;
-    @media ${({ theme }) => theme.media.laptopL} {
-      margin: auto;
-      max-width: 900px;
-    }
-  }
-
-  & .hero-img {
-    width: 50rem;
-    border-radius: 50%;
-
-    @media ${({ theme }) => theme.media.tablet} {
-      width: 100rem;
+    &__title,
+    &__message {
+      text-align: center;
     }
 
-    @media ${({ theme }) => theme.media.laptop} {
+    &__title {
+      font-size: 3.2rem;
+      margin-bottom: 2rem;
+
+      @media ${({ theme }) => theme.media.laptopM} {
+        font-size: 4rem;
+      }
+    }
+
+    &__message {
+      font-size: 1.8rem;
+      @media ${({ theme }) => theme.media.laptopL} {
+        margin: auto;
+        max-width: 900px;
+      }
+    }
+
+    &__img {
       width: 50rem;
-    }
+      border-radius: 50%;
 
-    @media ${({ theme }) => theme.media.laptopL} {
-      width: 80rem;
+      @media ${({ theme }) => theme.media.tablet} {
+        width: 100rem;
+      }
+
+      @media ${({ theme }) => theme.media.laptop} {
+        width: 50rem;
+      }
+
+      @media ${({ theme }) => theme.media.laptopL} {
+        width: 80rem;
+      }
     }
   }
 
-  & .card-gallery {
-    padding-bottom: 9rem;
-    padding-top: 5rem;
-    padding-left: 2rem;
-    padding-right: 2rem;
+  & .cards {
+    padding: 5rem 2rem 9rem 2rem;
     margin: auto;
 
     @media ${({ theme }) => theme.media.tablet} {
@@ -80,19 +77,19 @@ export const StyledHome = styled.section`
       justify-content: center;
       gap: 2.5rem;
     }
-  }
 
-  & .card-wrapper {
-    width: 100%;
-    min-width: 300px;
-    margin-bottom: 2rem;
+    &__list {
+      width: 100%;
+      min-width: 300px;
+      margin-bottom: 2rem;
 
-    @media ${({ theme }) => theme.media.tablet} {
-      width: 49%;
-    }
+      @media ${({ theme }) => theme.media.tablet} {
+        width: 49%;
+      }
 
-    @media ${({ theme }) => theme.media.laptop} {
-      width: 30%;
+      @media ${({ theme }) => theme.media.laptop} {
+        width: 30%;
+      }
     }
   }
 `;

@@ -23,7 +23,7 @@ const Modal: React.FC = () => {
         <h1>{text.errorMessage}</h1>
       </StyledModal.Body>
       <StyledModal.Footer>
-        <Button variant='outline-primary'>{text.goBackToHomePage}</Button>
+        <Button variant='outline-primary'>{text.goToHomePage}</Button>
       </StyledModal.Footer>
     </StyledModal>
   );

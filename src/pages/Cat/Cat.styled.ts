@@ -23,7 +23,7 @@ export const StlyledCat = styled.section`
     }
   }
 
-  & .cat-img-wrapper {
+  & .img-wrapper {
     width: 100%;
     overflow: hidden;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 22px 44px 0px;
@@ -55,16 +55,19 @@ export const StlyledCat = styled.section`
     }
   }
 
-  & .cat-details-wrapper {
+  & .details {
     padding: 2rem 2rem 3rem 1rem;
     display: flex;
     width: 100%;
+    font-size: 1.6rem;
+    margin-bottom: 0;
+    font-weight: 400;
 
     @media ${({ theme }) => theme.media.laptopM} {
       padding-left: 4rem;
     }
 
-    & .cat-divider {
+    &__divider {
       margin-right: 1rem;
       background-image: linear-gradient(120deg, #fccb90 0%, #d57eeb 100%);
       height: auto;
@@ -76,7 +79,7 @@ export const StlyledCat = styled.section`
       }
     }
 
-    & .cat-details {
+    &__wrapper {
       padding: 1rem 0;
 
       h1,
@@ -84,53 +87,47 @@ export const StlyledCat = styled.section`
       h3 {
         font-weight: 500;
       }
+    }
 
-      .cat-name {
-        font-size: 2.8rem;
-        margin-bottom: 1.5rem;
+    &__name {
+      font-size: 2.8rem;
+      margin-bottom: 1.5rem;
+    }
+
+    &__origin,
+    &__temperament {
+      font-size: 1.8rem;
+    }
+
+    &__temperament,
+    &__description {
+      @media ${({ theme }) => theme.media.laptopM} {
+        max-width: 50rem;
       }
 
-      cat-origin,
-      cat-temperament {
-        font-size: 1.8rem;
+      @media ${({ theme }) => theme.media.laptopL} {
+        max-width: 70rem;
+      }
+    }
+
+    &__temperament {
+      margin-bottom: 2rem;
+    }
+
+    &__description {
+      margin-bottom: 2rem;
+    }
+
+    &__ratings {
+      display: flex;
+      align-items: center;
+
+      &--label {
+        margin-right: 0.3rem;
       }
 
-      .cat-temperament,
-      .cat-description {
-        @media ${({ theme }) => theme.media.laptopM} {
-          max-width: 50rem;
-        }
-
-        @media ${({ theme }) => theme.media.laptopL} {
-          max-width: 70rem;
-        }
-      }
-
-      .cat-temperament {
-        margin-bottom: 2rem;
-      }
-
-      p {
-        font-size: 1.6rem;
-        margin-bottom: 0;
-        font-weight: 400;
-      }
-
-      & .cat-description {
-        margin-bottom: 2rem;
-      }
-
-      & .cat-ratings-wrapper {
-        display: flex;
-        align-items: center;
-
-        & .cat-ratings-label {
-          margin-right: 0.3rem;
-        }
-
-        & .cat-ratings-count {
-          margin-top: 0.7rem;
-        }
+      &--count {
+        margin-top: 0.7rem;
       }
     }
   }

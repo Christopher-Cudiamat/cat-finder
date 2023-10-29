@@ -7,15 +7,15 @@ export const StyledNotFound = styled.section`
   align-items: center;
   height: 100vh;
   padding: 2rem;
-  ${({ theme }) => theme.color.black};
+  color: ${({ theme }) => theme.color.blackLight};
 
-  & .error-img-wrapper {
+  & .hero {
     position: relative;
     @media ${({ theme }) => theme.media.tablet} {
       max-width: 500px;
     }
 
-    & .error-img-overlay {
+    &__overlay {
       border-radius: 1rem;
       background-image: linear-gradient(120deg, #fccb90 0%, #d57eeb 100%);
       position: absolute;
@@ -23,7 +23,7 @@ export const StyledNotFound = styled.section`
       opacity: 0.5;
     }
 
-    & .error-img {
+    &__img {
       height: 100%;
       widht: 100%;
       object-fit: cover;
@@ -31,16 +31,18 @@ export const StyledNotFound = styled.section`
     }
   }
 
-  & .error-title {
-    font-size: 3rem;
+  & .title {
+    font-size: 2.5rem;
     margin: 2rem 0 1rem 0;
+    text-align: center;
 
     @media ${({ theme }) => theme.media.laptop} {
+      font-size: 4rem;
       padding-top: 4rem;
     }
   }
 
-  & .error-message {
+  & .message {
     font-size: 1.6rem;
     font-weight: 500;
     max-width: 70rem;
@@ -48,7 +50,7 @@ export const StyledNotFound = styled.section`
     text-align: center;
   }
 
-  & .error-btn {
+  & .btn {
     padding: 1rem 2rem;
     font-size: 1.6rem;
   }
