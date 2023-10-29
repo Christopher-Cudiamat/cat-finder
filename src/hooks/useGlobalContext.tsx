@@ -14,6 +14,7 @@ export interface IGlobalState {
 interface IGlobalContext {
   globalState: IGlobalState;
   setGlobalState: React.Dispatch<React.SetStateAction<IGlobalState>>;
+  resetGlobalState: () => void;
 }
 
 export const GlobalContext = createContext<IGlobalContext | null>(null);
@@ -26,11 +27,21 @@ export default function GlobalContextProvider({ children }: IGlobalContextProvid
     loading: false,
   });
 
+  const resetGlobalState = () => {
+    setGlobalState({
+      breedId: '',
+      page: 1,
+      error: false,
+      loading: false,
+    });
+  };
+
   return (
     <GlobalContext.Provider
       value={{
         globalState,
         setGlobalState,
+        resetGlobalState,
       }}
     >
       {children}
