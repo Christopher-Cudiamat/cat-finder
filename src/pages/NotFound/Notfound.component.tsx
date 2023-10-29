@@ -2,6 +2,7 @@ import React from 'react';
 import { StyledNotFound } from './NotFound.styled';
 import { Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
+import text from 'contents/text.json';
 
 const NotFound: React.FC = () => {
   const navigate = useNavigate();
@@ -16,13 +17,13 @@ const NotFound: React.FC = () => {
           className='error-img'
         />
       </div>
-      <h1 className='error-title'>404 - Page Not Found</h1>
-      <p className='error-message'>Sorry, the page you are looking for does not exist.</p>
+      <h1 className='error-title'>{text.pageNotFoundTitle}</h1>
+      <p className='error-message'>{text.pageNotFoundMessage}</p>
       <Button
         onClick={() => navigate('/')}
         className='error-btn'
       >
-        Go to home page
+        {text.goBackToHomePage}
       </Button>
     </StyledNotFound>
   );

@@ -3,6 +3,7 @@ import { useGlobalContext } from 'hooks/useGlobalContext';
 import { StyledModal } from './Modal.styled';
 import Button from 'react-bootstrap/Button';
 import { useNavigate } from 'react-router-dom';
+import text from 'contents/text.json';
 
 const Modal: React.FC = () => {
   const { globalState, setGlobalState } = useGlobalContext();
@@ -19,10 +20,10 @@ const Modal: React.FC = () => {
       onClick={handleCloseModal}
     >
       <StyledModal.Body>
-        <p>Apologies but we could not load new cats for you at this time! Miau!</p>
+        <h1>{text.errorMessage}</h1>
       </StyledModal.Body>
       <StyledModal.Footer>
-        <Button variant='outline-primary'>Go back to home page</Button>
+        <Button variant='outline-primary'>{text.goBackToHomePage}</Button>
       </StyledModal.Footer>
     </StyledModal>
   );
