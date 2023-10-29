@@ -48,13 +48,13 @@ export const StyledForm = styled(Form)`
   }
 `;
 
-export const StyledFormButtonWrapper = styled.div<{ hide: boolean }>`
+export const StyledFormButtonWrapper = styled.div<{ $hide: boolean }>`
   z-index: 100;
   width: 100%;
   transition: bottom 0.5s;
   position: fixed;
   left: 0;
-  bottom: ${(props) => (props?.hide ? '-20rem' : '0')};
+  bottom: ${(props) => (props?.$hide ? '-20rem' : '0')};
 
   @media ${({ theme }) => theme.media.laptopM} {
     bottom: 0;

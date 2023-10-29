@@ -84,7 +84,7 @@ const FormFilter: React.FC<IFormFilterProps> = ({ allDataIsLoaded }) => {
           ))}
         </Form.Select>
         {!allDataIsLoaded && (
-          <StyledFormButtonWrapper hide={hideFormButton}>
+          <StyledFormButtonWrapper $hide={hideFormButton}>
             <Button
               onClick={handleLoadAdditionalData}
               disabled={!breedId}
