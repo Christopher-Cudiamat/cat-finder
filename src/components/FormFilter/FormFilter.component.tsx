@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import useFetch from 'hooks/useFetch';
 import { useGlobalContext, IGlobalState } from 'hooks/useGlobalContext';
-import { StyledForm, StyledFormFooter } from './FormFilter.styled';
+import { StyledForm, StyledFormButtonWrapper } from './FormFilter.styled';
+import { Button } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
 import text from 'contents/text.json';
 
 interface IFormFilterProps {
-  hideButton?: boolean | null;
+  allDataIsLoaded?: boolean | null;
 }
 
 interface IOptions {
@@ -15,8 +15,8 @@ interface IOptions {
   name: string;
 }
 
-const FormFilter: React.FC<IFormFilterProps> = ({ hideButton }) => {
-  const [hideFormFooter, setHideFormFooter] = useState(true);
+const FormFilter: React.FC<IFormFilterProps> = ({ allDataIsLoaded }) => {
+  const [hideFormButton, setHideFormButton] = useState(true);
   const { data } = useFetch('breeds');
   const {
     globalState: { breedId },
@@ -36,14 +36,14 @@ const FormFilter: React.FC<IFormFilterProps> = ({ hideButton }) => {
   };
 
   useEffect(() => {
-    const bottomPageElement = document.querySelector('#bottom');
+    const bottomPageElement = document.querySelector('#bottom-observer');
 
     if (breedId && bottomPageElement) {
       const bottomObserver = new IntersectionObserver(([{ isIntersecting }]) => {
         if (isIntersecting) {
-          setHideFormFooter(false);
+          setHideFormButton(false);
         } else {
-          setHideFormFooter(true);
+          setHideFormButton(true);
         }
       });
 
@@ -57,10 +57,11 @@ const FormFilter: React.FC<IFormFilterProps> = ({ hideButton }) => {
         controlId='formGroupEmail'
         onChange={handleSelectBreed}
       >
-        <Form.Label>{text.brandName}</Form.Label>
+        <Form.Label className='form__label'>{text.brandName}</Form.Label>
         <Form.Select
           aria-label='Form filter select'
           value={breedId}
+          className='form__select'
         >
           <option
             value={''}
@@ -77,19 +78,17 @@ const FormFilter: React.FC<IFormFilterProps> = ({ hideButton }) => {
             </option>
           ))}
         </Form.Select>
-        <StyledFormFooter
-          className='form-footer-wrapper'
-          hideFormFooter={hideFormFooter}
-        >
-          {!hideButton && (
+        {!allDataIsLoaded && (
+          <StyledFormButtonWrapper hide={hideFormButton}>
             <Button
               onClick={handleLoadAdditionalData}
               disabled={!breedId}
+              className='form__btn'
             >
               {text.buttonLoadMore}
             </Button>
-          )}
-        </StyledFormFooter>
+          </StyledFormButtonWrapper>
+        )}
       </Form.Group>
     </StyledForm>
   );

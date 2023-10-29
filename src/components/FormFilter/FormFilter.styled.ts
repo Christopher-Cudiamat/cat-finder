@@ -15,41 +15,42 @@ export const StyledForm = styled(Form)`
     padding-top: 4rem;
   }
 
-  & label {
+  & .form__label {
     font-size: 2.4rem;
     font-weight: 500;
     margin-bottom: 1rem;
   }
 
-  & select,
-  & button {
+  & .form__select,
+  & .form__btn {
     font-size: 1.6rem;
     font-weight: 500;
     height: 5rem;
+    width: 100%;
   }
 
-  & select {
+  & .form__select {
     margin-bottom: 2rem;
   }
 `;
 
-export const StyledFormFooter = styled.div<{ hideFormFooter?: boolean }>`
+export const StyledFormButtonWrapper = styled.div<{ hide: boolean }>`
   z-index: 100;
   width: 100%;
+  transition: bottom 0.5s;
   position: fixed;
   left: 0;
-  bottom: ${(props) => (props.hideFormFooter ? '-20rem' : '0')};
-  transition: bottom 0.5s;
+  bottom: ${(props) => (props?.hide ? '-20rem' : '0')};
 
   @media ${({ theme }) => theme.media.laptopM} {
     position: relative;
-    display: flex;
-    flex-direction: column;
-    bottom: 0;
   }
 
-  & button {
-    width: 100%;
-    border-radius: 1rem;
+  & .form__btn {
+    border-radius: 0;
+
+    @media ${({ theme }) => theme.media.laptopM} {
+      border-radius: 1rem;
+    }
   }
 `;
