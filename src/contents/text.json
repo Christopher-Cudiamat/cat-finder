@@ -12,5 +12,9 @@
   "affection": "Affection",
   "grooming": "Grooming",
   "energy": "Energy",
-  "origin": "Origin"
+  "origin": "Origin",
+  "errorMessage": "Apologies but we could not load new cats for you at this time! Miau!",
+  "goBackToHomePage": "goBackToHomePage",
+  "pageNotFoundTitle": "404 - Page Not Found",
+  "pageNotFoundMessage": "Sorry, the page you are looking for does not exist."
 }
