@@ -19,6 +19,12 @@ export const StyledForm = styled(Form)`
     font-size: 2.4rem;
     font-weight: 500;
     margin-bottom: 1rem;
+    cursor: pointer;
+
+    & > a {
+      text-decoration: none;
+      color: ${({ theme }) => theme.color.white};
+    }
   }
 
   & .form-select,

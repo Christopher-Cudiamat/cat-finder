@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import useFetch from 'hooks/useFetch';
+import { useNavigate } from 'react-router-dom';
 import { useGlobalContext, IGlobalState } from 'hooks/useGlobalContext';
 import { StyledForm, StyledFormButtonWrapper } from './FormFilter.styled';
 import { Button } from 'react-bootstrap';
@@ -18,6 +19,7 @@ interface IOptions {
 const FormFilter: React.FC<IFormFilterProps> = ({ allDataIsLoaded }) => {
   const [hideFormButton, setHideFormButton] = useState(true);
   const { data } = useFetch('breeds');
+  const navigate = useNavigate();
   const {
     globalState: { breedId },
     setGlobalState,
@@ -32,6 +34,16 @@ const FormFilter: React.FC<IFormFilterProps> = ({ allDataIsLoaded }) => {
   const handleLoadAdditionalData = () => {
     setGlobalState((prevState: IGlobalState) => {
       return { ...prevState, page: prevState.page + 1 };
+    });
+  };
+
+  const handleNavigateHome = () => {
+    navigate('/');
+    setGlobalState({
+      breedId: '',
+      page: 1,
+      error: false,
+      loading: false,
     });
   };
 
@@ -57,7 +69,7 @@ const FormFilter: React.FC<IFormFilterProps> = ({ allDataIsLoaded }) => {
         controlId='formGroupEmail'
         onChange={handleSelectBreed}
       >
-        <Form.Label>{text.brandName}</Form.Label>
+        <Form.Label onClick={handleNavigateHome}>{text.brandName}</Form.Label>
         <Form.Select
           aria-label='Form filter select'
           value={breedId}
