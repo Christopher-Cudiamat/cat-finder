@@ -50,6 +50,6 @@ export const StyledFormFooter = styled.div<{ hideFormFooter?: boolean }>`
 
   & button {
     width: 100%;
-    border-radius: 0;
+    border-radius: 1rem;
   }
 `;

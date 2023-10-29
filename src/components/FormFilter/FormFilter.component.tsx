@@ -68,15 +68,14 @@ const FormFilter: React.FC<IFormFilterProps> = ({ hideButton }) => {
           >
             {text.selectDefaultValue}
           </option>
-          {data &&
-            data.map(({ id, name }: IOptions) => (
-              <option
-                key={id}
-                value={id}
-              >
-                {name}
-              </option>
-            ))}
+          {data?.map(({ id, name }: IOptions) => (
+            <option
+              key={id}
+              value={id}
+            >
+              {name}
+            </option>
+          ))}
         </Form.Select>
         <StyledFormFooter
           className='form-footer-wrapper'
