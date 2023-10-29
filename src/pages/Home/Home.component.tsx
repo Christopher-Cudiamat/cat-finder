@@ -31,7 +31,7 @@ const Home: React.FC = () => {
 
   useEffect(() => {
     console.log('cats', cats);
-    if (!globalState?.breedId || globalState?.breedId === undefined) {
+    if (!globalState?.breedId) {
       if (cats) setCats(null);
       return;
     }
@@ -50,6 +50,7 @@ const Home: React.FC = () => {
         const data = await response.json();
         const headersObj = Object.fromEntries([...response.headers.entries()]);
         setPageCount(Number(headersObj['pagination-count']));
+        setGlobalState({ ...globalState, loading: false });
 
         if (!cats) {
           setCats(data);
@@ -64,9 +65,7 @@ const Home: React.FC = () => {
         );
         setCats([...resetCatsArr, ...filteredCatsArr]);
       } catch (error) {
-        setGlobalState({ ...globalState, error: true });
-      } finally {
-        setGlobalState({ ...globalState, loading: false });
+        setGlobalState({ ...globalState, error: true, loading: false });
       }
     };
 

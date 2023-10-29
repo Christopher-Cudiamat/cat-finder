@@ -6,12 +6,12 @@ import { useNavigate } from 'react-router-dom';
 import text from 'contents/text.json';
 
 const Modal: React.FC = () => {
-  const { globalState, setGlobalState } = useGlobalContext();
+  const { globalState, resetGlobalState } = useGlobalContext();
   const navigate = useNavigate();
 
   const handleCloseModal = () => {
     navigate('/');
-    setGlobalState({ ...globalState, error: false, breedId: '' });
+    resetGlobalState();
   };
 
   return (

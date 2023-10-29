@@ -23,6 +23,7 @@ const FormFilter: React.FC<IFormFilterProps> = ({ allDataIsLoaded }) => {
   const {
     globalState: { breedId },
     setGlobalState,
+    resetGlobalState,
   } = useGlobalContext();
 
   const handleSelectBreed = (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -39,12 +40,7 @@ const FormFilter: React.FC<IFormFilterProps> = ({ allDataIsLoaded }) => {
 
   const handleNavigateHome = () => {
     navigate('/');
-    setGlobalState({
-      breedId: '',
-      page: 1,
-      error: false,
-      loading: false,
-    });
+    resetGlobalState();
   };
 
   useEffect(() => {
@@ -65,14 +61,12 @@ const FormFilter: React.FC<IFormFilterProps> = ({ allDataIsLoaded }) => {
 
   return (
     <StyledForm>
-      <Form.Group
-        controlId='formGroupEmail'
-        onChange={handleSelectBreed}
-      >
+      <Form.Group controlId='formGroupEmail'>
         <Form.Label onClick={handleNavigateHome}>{text.brandName}</Form.Label>
         <Form.Select
           aria-label='Form filter select'
           value={breedId}
+          onChange={handleSelectBreed}
         >
           <option
             value={''}

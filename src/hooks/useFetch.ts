@@ -22,12 +22,11 @@ const useFetch = (endpoint: string, refetch?: boolean) => {
         if (!response.ok) throw new Error();
 
         const data = await response.json();
+        setGlobalState({ ...globalState, loading: false });
 
         if (mounted) setData(data);
       } catch (_) {
-        if (mounted) setGlobalState({ ...globalState, error: true });
-      } finally {
-        if (mounted) setGlobalState({ ...globalState, loading: false });
+        if (mounted) setGlobalState({ ...globalState, error: true, loading: false });
       }
     };
 
