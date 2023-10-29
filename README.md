@@ -1,3 +1,11 @@
+# fe_project_iona_Christopher-Cudiamat
+
+Frontend Coding Challenge: Build a simple application.
+![Alt text](./cat-finder/public/images/images/project-screenshot-desktop1?raw=true "App")
+![Alt text](./cat-finder/public/images/images/project-screenshot-desktop2.png?raw=true "App")
+![Alt text](./cat-finder/public/images/images/project-screenshot-mobile1.png?raw=true "App")
+![Alt text](./cat-finder/public/images/images/project-screenshot-mobile2.png?raw=true "App")
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
