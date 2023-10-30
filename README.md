@@ -1,7 +1,7 @@
 # fe_project_iona_Christopher-Cudiamat
 
 Frontend Coding Challenge: Build a simple cat application.
-![Alt text](./public/images/project-screenshot-desktop1?raw=true "App")
+![Alt text](./public/images/project-screenshot-desktop1.png?raw=true "App")
 ![Alt text](./public/images/project-screenshot-desktop2.png?raw=true "App")
 ![Alt text](./public/images/project-screenshot-mobile1.png?raw=true "App")
 ![Alt text](./public/images/project-screenshot-mobile2.png?raw=true "App")
