@@ -1,10 +1,10 @@
 # fe_project_iona_Christopher-Cudiamat
 
-Frontend Coding Challenge: Build a simple application.
-![Alt text](./cat-finder/public/images/images/project-screenshot-desktop1?raw=true "App")
-![Alt text](./cat-finder/public/images/images/project-screenshot-desktop2.png?raw=true "App")
-![Alt text](./cat-finder/public/images/images/project-screenshot-mobile1.png?raw=true "App")
-![Alt text](./cat-finder/public/images/images/project-screenshot-mobile2.png?raw=true "App")
+Frontend Coding Challenge: Build a simple cat application.
+![Alt text](./public/images/project-screenshot-desktop1?raw=true "App")
+![Alt text](./public/images/project-screenshot-desktop2.png?raw=true "App")
+![Alt text](./public/images/project-screenshot-mobile1.png?raw=true "App")
+![Alt text](./public/images/project-screenshot-mobile2.png?raw=true "App")
 
 # Getting Started with Create React App
 
@@ -46,6 +46,23 @@ If you aren’t satisfied with the build tool and configuration choices, you can
 Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+
+### `npm run lint`
+
+This command is used to run a code linter (e.g., ESLint) on your JavaScript or TypeScript codebase.
+Thi linter checks your code for style and formatting issues, as well as potential programming errors.
+When you run npm run lint, the linter will report any issues it finds in your code, but it won't automatically fix them.
+It identifies and report problems, so you can manually address them.
+
+### `npm run lint:fix`
+
+This command runs the code linter in a "fix" mode.
+When you run npm run lint:fix, the linter attempts to automatically fix any simple or automatically fixable issues in your code. This may include things like fixing indentation, formatting, or other stylistic issues.
+This can be a helpful command to use as part of your development workflow, as it can save you time by automatically correcting minor issues.
+
+### `npm run format`
+
+This formats the code using the Prettier code formatter.
 
 ## Learn More
 
